@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Circuit Shift Puzzle</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="game-panel" aria-labelledby="game-title">
+        <div class="hud">
+          <div>
+            <p class="eyebrow">Logic puzzle</p>
+            <h1 id="game-title">Circuit Shift</h1>
+          </div>
+          <div class="stats" aria-label="Game stats">
+            <div>
+              <span id="move-count">0</span>
+              <small>Moves</small>
+            </div>
+            <div>
+              <span id="timer">00:00</span>
+              <small>Time</small>
+            </div>
+            <div>
+              <span id="best-score">--</span>
+              <small>Best</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="toolbar" aria-label="Puzzle controls">
+          <div class="difficulty" role="group" aria-label="Difficulty">
+            <button class="chip active" type="button" data-size="3">3x3</button>
+            <button class="chip" type="button" data-size="4">4x4</button>
+            <button class="chip" type="button" data-size="5">5x5</button>
+          </div>
+          <div class="actions">
+            <button id="undo-button" type="button" title="Undo last move">Undo</button>
+            <button id="hint-button" type="button" title="Highlight a helpful tile">Hint</button>
+            <button id="shuffle-button" type="button" title="Start a new puzzle">New</button>
+          </div>
+        </div>
+
+        <div class="board-wrap">
+          <div id="board" class="board" aria-label="Sliding puzzle board"></div>
+        </div>
+
+        <div class="status-row">
+          <p id="status">Slide tiles into order. Use arrow keys or tap a tile beside the empty socket.</p>
+          <button id="solve-button" type="button">Preview solution</button>
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="How scoring works">
+        <h2>Make the circuit flow</h2>
+        <p>
+          Rebuild the numbered circuit by sliding modules into sequence. Lower moves and faster solves set the record
+          for each board size.
+        </p>
+        <div class="legend">
+          <span class="legend-tile filled">8</span>
+          <span>Placed module</span>
+          <span class="legend-tile empty"></span>
+          <span>Open socket</span>
+        </div>
+      </aside>
+    </main>
+
+    <dialog id="win-dialog">
+      <form method="dialog">
+        <p class="eyebrow">Circuit restored</p>
+        <h2>You solved it</h2>
+        <p id="win-summary"></p>
+        <button type="submit">Play again</button>
+      </form>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+</html>
